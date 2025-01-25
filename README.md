@@ -10,42 +10,41 @@ I started my career as a freelancer, and one of my early projects was for a trus
 
 At the time, they relied on a manual system to maintain records, which made it extremely tedious to handle tasks like storing, searching, and retrieving student data. For instance, finding the record of a student who had received a scholarship a decade ago would take considerable time and effort. Additionally, they wanted to query data, such as identifying the number of beneficiaries from a single family—something that was nearly impossible with their existing system. To address these issues, I developed a centralized digital system to streamline their processes.
 
-Project Overview
 The software I built covered three core sections: Education, Medical, and Welfare. The first module I developed, was the Education Module, focusing on scholarships and loans. It was designed to replace the manual file-based system and provide a more efficient and user-friendly workflow.
 
-How the System Works
+**How the System Works:**<br>
 The system consists of various user panels designed for different roles within the organization, including:
 
-Data Entry Panel
-HOD (Head of Department) Panel
-CEO Panel
-Trustee Panel
-Accounts Panel
-Administrator Panel
-Here’s how the process flows through the system:
+Data Entry Panel<br>
+HOD (Head of Department) Panel<br>
+CEO Panel<br>
+Trustee Panel<br>
+Accounts Panel<br>
+Administrator Panel<br>
+**Here’s how the process flows through the system:**<br>
 
-1. Application Submission and Initial Processing
-A student applying for a scholarship submits a physical form to the Data Entry Operator (DEO).
-The DEO inputs the student’s details into the system and initiates the application process.
-2. Review and Approval Workflow
+1. Application Submission and Initial Processing<br>
+A student applying for a scholarship submits a physical form to the Data Entry Operator (DEO).<br>
+The DEO inputs the student’s details into the system and initiates the application process.<br>
+2. Review and Approval Workflow<br>
 The application is forwarded to the HOD for review. If the HOD identifies any discrepancies or requires additional information, they can return the application to the DEO with remarks.
 The DEO makes the necessary corrections and resubmits the form to the HOD.
 Once the HOD is satisfied, they either approve or reject the form. If the scholarship amount exceeds a predefined limit, the HOD recommends the application to a higher authority (e.g., CEO or Trustee).
-This approval workflow continues through the CEO and Trustee, depending on the application's specifics.
-3. Accounts Processing
+This approval workflow continues through the CEO and Trustee, depending on the application's specifics.<br>
+3. Accounts Processing<br>
 Approved applications are sent to the Accounts Panel, where the operator generates a list of bank details, including student identifiers, for processing payments.
 This list is sent to the bank, which returns a statement indicating the status of payments.
-Based on the bank’s response, the account operator updates the system. If payments fail due to incorrect details, the application is sent back to the DEO for correction, restarting the loop until the issue is resolved.
-4. Administrative Oversight
+Based on the bank’s response, the account operator updates the system. If payments fail due to incorrect details, the application is sent back to the DEO for correction, restarting the loop until the issue is resolved.<br>
+4. Administrative Oversight<br>
 The Administrator Panel enables the tracking of user activity and credential management.
 When a new employee joins the organization, the admin issues a unique username. The employee can then register and set a password using a login/registration page.
-If an employee misuses their credentials, the administrator can deactivate their account to prevent unauthorized actions.
-Key Features and Benefits
-Centralized Database: A unified system to manage all records, making data retrieval fast and efficient.
-Role-Based Workflow: Each user role has specific permissions and tasks, ensuring a structured and secure process.
-Error Resolution: The feedback loop between the DEO and Accounts ensures corrections are made promptly for payment failures.
-User Management: The administrator can monitor activities, issue credentials, and take corrective actions as needed.
-Time Efficiency: By digitizing the entire process, the organization has significantly reduced the time required for record management and decision-making.
+If an employee misuses their credentials, the administrator can deactivate their account to prevent unauthorized actions.<br>
+**Key Features and Benefits**<br>
+**Centralized Database:** A unified system to manage all records, making data retrieval fast and efficient.<br>
+**Role-Based Workflow:** Each user role has specific permissions and tasks, ensuring a structured and secure process.<br>
+**Error Resolution:** The feedback loop between the DEO and Accounts ensures corrections are made promptly for payment failures.<br>
+**User Management:** The administrator can monitor activities, issue credentials, and take corrective actions as needed.<br>
+**Time Efficiency:** By digitizing the entire process, the organization has significantly reduced the time required for record management and decision-making.<br>
 
 This system has transformed the way the trust organization operates, especially in managing its education initiatives. By replacing the cumbersome manual process with a centralized and automated solution, the organization can now efficiently handle complex workflows, ensure data accuracy, and focus more on helping those in need.
 </p>
@@ -150,12 +149,12 @@ DATABASE_URL_CLOUD="postgresql://username:password@localhost:portnumber/db2?sche
 As per the question, we have two databases involved in the solution: one local and one cloud-based. Unfortunately, I do not have access to a live environment to implement this setup. Therefore, I have created two databases, treating one as local and the other as cloud-based, to simulate the required environment.
 </p>
 <cod>
-There are Four GET API to check
-1. http://127.0.0.1:3030/api/count/tableName
-2. http://127.0.0.1:3030/api/rows/tableName
-3. http://127.0.0.1:3030/api/sample/tableName
-4. http://127.0.0.1:3030/api/checksum/tableName
-5. http://127.0.0.1:3030/api/checksum/tableName
+There are Four GET API to check<br>
+1. http://127.0.0.1:3030/api/count/tableName<br>
+2. http://127.0.0.1:3030/api/rows/tableName<br>
+3. http://127.0.0.1:3030/api/sample/tableName<br>
+4. http://127.0.0.1:3030/api/checksum/tableName<br>
+5. http://127.0.0.1:3030/api/checksum/tableName<br>
 
 
 Here tablename passing as parameter So please make sure to pass tablename as (sampletable) which is in our migration
@@ -175,17 +174,17 @@ AccountTransaction: Tracks all transactions, ensuring records are reflected in b
 When a transaction occurs between accounts in different banks, the corresponding transaction details are recorded in the AccountTransaction table of both databases to ensure consistency and maintain a clear audit trail.
 </p>
 <cod>
-There are One POST API to check
-1. http://127.0.0.1:3030/api/transaction/transfer
-req{
+There are One POST API to check<br>
+1. http://127.0.0.1:3030/api/transaction/transfer<br><br>
+<code>req{
     "fromAccountId":1,
     "toAccountId":3,
     "amount":10,
     "userId":1
-}
-res{
+}</code><br>
+<code>res{
     "message": "Transaction successful"
-}
+}</code>
 
 You can use same value as i provided in above request becuase req which i have given is same as which i have store in seeder
 </code>
