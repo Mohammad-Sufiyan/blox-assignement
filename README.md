@@ -109,10 +109,10 @@ I later applied this knowledge to successfully develop Angular websites with SSR
 
 <h2>Installing</h2>
 <pre>open terminal and type</pre>
-<code>git clone https://github.com/Mohammad-Sufiyan/blox.git</code><br><br>
+<code>git clone https://github.com/Mohammad-Sufiyan/blox-assignement.git</code><br><br>
 
 <h4>or simply download using the url below</h4>
-<code>https://github.com/Mohammad-Sufiyan/blox.git</code><br>
+<code>https://github.com/Mohammad-Sufiyan/blox-assignement.git</code><br>
 
 <h2>Change the following env variable with your postgress URL settings</h2>
 <code>
@@ -154,7 +154,7 @@ There are Four GET API to check<br>
 2. http://127.0.0.1:3030/api/rows/tableName<br>
 3. http://127.0.0.1:3030/api/sample/tableName<br>
 4. http://127.0.0.1:3030/api/checksum/tableName<br>
-5. http://127.0.0.1:3030/api/checksum/tableName<br>
+5. http://127.0.0.1:3030/api/schema/tableName<br>
 
 
 Here tablename passing as parameter So please make sure to pass tablename as (sampletable) which is in our migration
