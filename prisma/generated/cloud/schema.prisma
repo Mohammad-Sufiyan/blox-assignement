@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/cloud"
+}
+
+datasource db2 {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_CLOUD") // Simulated cloud connection
+}
+
+// Mainly used This table for question 1 and according to that i have coded 
+model sampletable {
+  id      Int    @id @default(autoincrement())
+  name    String
+  value   String
+  address Json
+}
+
+// For question 5 these schema i am using
+model User {
+  id        Int       @id @default(autoincrement())
+  username  String    @unique
+  password  String
+  email     String    @unique
+  createdAt DateTime  @default(now())
+  accounts  Account[] @relation("UserAccounts")
+}
+
+model Bank {
+  id       Int       @id @default(autoincrement())
+  name     String
+  accounts Account[]
+}
+
+model Account {
+  id           Int                  @id @default(autoincrement())
+  balance      Float
+  userId       Int
+  bankId       Int
+  user         User                 @relation("UserAccounts", fields: [userId], references: [id])
+  bank         Bank                 @relation(fields: [bankId], references: [id])
+  transactions AccountTransaction[]
+}
+
+model AccountTransaction {
+  id           Int      @id @default(autoincrement())
+  type         String // Debit or Credit
+  amount       Float
+  balanceAfter Float // Account balance after the transaction
+  accountId    Int
+  createdAt    DateTime @default(now())
+  account      Account  @relation(fields: [accountId], references: [id])
+}
