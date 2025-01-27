@@ -98,37 +98,6 @@ exports.compareCheckSumOfDB = async (req, res, next) => {
 }
 
 
-
-exports.dataSampling = async (req, res, next) => {
-  const { tableName } = req.params;
-  const sampleSize = CONSTANTS.SAMPLE_SIZE; // Number of rows to sample
-  try {
-    const localSample = await prismaLocal.$queryRawUnsafe(`
-        SELECT "id", "name", "value", "address" FROM "${tableName}" ORDER BY RANDOM() LIMIT ${sampleSize}
-      `);
-
-    const cloudSample = await prismaCloud.$queryRawUnsafe(`
-        SELECT "id", "name", "value", "address" FROM "${tableName}" ORDER BY RANDOM() LIMIT ${sampleSize}
-      `);
-
-    const mismatches = [];
-    for (let i = 0; i < localSample.length; i++) {
-      if (JSON.stringify(localSample[i]) !== JSON.stringify(cloudSample[i])) {
-        mismatches.push({ local: localSample[i], cloud: cloudSample[i] });
-      }
-    }
-
-    if (mismatches.length === 0) {
-      res.json({ message: `Sample data matches for table "${tableName}."` });
-    } else {
-      res.json({ message: `Mismatches found in sampled data for table "${tableName}."`, mismatches });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
-}
-
 exports.schemaVerification = async (req, res, next) => {
   const { tableName } = req.params;
   try {

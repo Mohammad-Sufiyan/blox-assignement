@@ -1,7 +1,6 @@
 
 const CONSTANTS = {
   CHUNK_SIZE:50,
-  SAMPLE_SIZE:100,
   TR_DEBIT:'DEBIT',
   TR_CREDIT:'CREDIT',
   errorMessage:{

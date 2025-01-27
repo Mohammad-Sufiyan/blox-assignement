@@ -152,9 +152,8 @@ As per the question, we have two databases involved in the solution: one local a
 There are Four GET API to check<br>
 1. http://127.0.0.1:3030/api/count/tableName<br>
 2. http://127.0.0.1:3030/api/rows/tableName<br>
-3. http://127.0.0.1:3030/api/sample/tableName<br>
-4. http://127.0.0.1:3030/api/checksum/tableName<br>
-5. http://127.0.0.1:3030/api/schema/tableName<br>
+3. http://127.0.0.1:3030/api/checksum/tableName<br>
+4. http://127.0.0.1:3030/api/schema/tableName<br>
 
 
 Here tablename passing as parameter So please make sure to pass tablename as (sampletable) which is in our migration
@@ -178,7 +177,7 @@ There are One POST API to check<br>
 1. http://127.0.0.1:3030/api/transaction/transfer<br><br>
 <code>req{
     "fromAccountId":1,
-    "toAccountId":3,
+    "toAccountId":1,
     "amount":10,
     "userId":1
 }</code><br>
